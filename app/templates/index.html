@@ -28,7 +28,7 @@
         <header>
             <!-- logo -->
             <div class="am-fl tpl-header-logo">
-                <a href="javascript:;"><img src="../static/img/logo.png" alt=""></a>
+                <a href="http://www.kongwiki.top/" target="_blank"><img src="../static/img/logo.png" alt=""></a>
             </div>
             <!-- 右侧内容 -->
             <div class="tpl-header-fluid">
@@ -201,7 +201,7 @@
 
             <!-- 菜单 -->
             <ul class="sidebar-nav">
-                <li class="sidebar-nav-heading">Components <span class="sidebar-nav-heading-info"> 附加组件</span></li>
+                <li class="sidebar-nav-heading">菜单</li>
                 <li class="sidebar-nav-link">
                     <a href="/" class="active">
                         <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
@@ -213,7 +213,7 @@
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
-                    <a href="calendar.html">
+                    <a href="/calendar">
                         <i class="am-icon-calendar sidebar-nav-link-logo"></i> 日历
                     </a>
                 </li>
@@ -287,49 +287,40 @@
 
             <div class="row-content am-cf">
                 <div class="row  am-cf">
-                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-4">
-                        <div class="widget am-cf">
-                            <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">月度财务收支计划</div>
-                                <div class="widget-function am-fr">
-                                    <a href="javascript:;" class="am-icon-cog"></a>
-                                </div>
+                    <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+                        <div class="widget widget-purple am-cf">
+                            <div class="widget-statistic-header">
+                                车辆事件统计
                             </div>
-                            <div class="widget-body am-fr">
-                                <div class="am-fl">
-                                    <div class="widget-fluctuation-period-text">
-                                        ￥61746.45
-                                        <button class="widget-fluctuation-tpl-btn">
-                        <i class="am-icon-calendar"></i>
-                        更多月份
-                      </button>
-                                    </div>
+                            <div class="widget-statistic-body">
+                                {% if allCount %}
+                                <div class="widget-statistic-value">
+                                   {{ allCount }}
                                 </div>
-                                <div class="am-fr am-cf">
-                                    <div class="widget-fluctuation-description-amount text-success" am-cf>
-                                        +￥30420.56
 
-                                    </div>
-                                    <div class="widget-fluctuation-description-text am-text-right">
-                                        8月份收入
-                                    </div>
+                                <div class="widget-statistic-description">
+                                    较近一次统计多统计 <strong>34215</strong>个
                                 </div>
+                                {% endif %}
+                                <span class="widget-statistic-icon am-icon-support"></span>
                             </div>
                         </div>
-
                     </div>
                     <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
                         <div class="widget widget-primary am-cf">
                             <div class="widget-statistic-header">
-                                本季度利润
+                                共收录事件类型
                             </div>
                             <div class="widget-statistic-body">
+                                {% if titleCount %}
                                 <div class="widget-statistic-value">
-                                    ￥27,294
+                                    {{ titleCount }}
                                 </div>
+
                                 <div class="widget-statistic-description">
-                                    本季度比去年多收入 <strong>2593元</strong> 人民币
+                                    较最近一次统计多出 <strong>5</strong> 种事件类型
                                 </div>
+                                {% endif %}
                                 <span class="widget-statistic-icon am-icon-credit-card-alt"></span>
                             </div>
                         </div>
@@ -337,15 +328,18 @@
                     <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
                         <div class="widget widget-purple am-cf">
                             <div class="widget-statistic-header">
-                                本季度利润
+                                共收录车队数量
                             </div>
                             <div class="widget-statistic-body">
+                                {% if iccardCount %}
                                 <div class="widget-statistic-value">
-                                    ￥27,294
+                                   {{ iccardCount }}
                                 </div>
+
                                 <div class="widget-statistic-description">
-                                    本季度比去年多收入 <strong>2593元</strong> 人民币
+                                    较近一次统计多收录车队 <strong>386</strong> 个
                                 </div>
+                                {% endif %}
                                 <span class="widget-statistic-icon am-icon-support"></span>
                             </div>
                         </div>
@@ -356,7 +350,7 @@
                     <div class="am-u-sm-12 am-u-md-8">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">月度财务收支计划</div>
+                                <div class="widget-title am-fl">事故发生事件类型统计</div>
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
@@ -370,7 +364,7 @@
                     <div class="am-u-sm-12 am-u-md-4">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">gfg</div>
+                                <div class="widget-title am-fl">待更新</div>
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
@@ -385,117 +379,46 @@
                     <div class="am-u-sm-12 am-u-md-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">基本边框</div>
+                                <div class="widget-title am-fl">当天车辆信息一览</div>
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
                             </div>
                             <div class="widget-body  widget-body-lg am-fr">
-
+                                {% if data %}
                                 <table width="100%" class="am-table am-table-compact am-table-bordered tpl-table-black " id="example-r">
                                     <thead>
                                         <tr>
-                                            <th>文章标题</th>
-                                            <th>作者</th>
-                                            <th>时间</th>
-                                            <th>操作</th>
+                                            <th>imei</th>
+                                            <th>speed</th>
+                                            <th>title</th>
+                                            <th>latitude</th>
+                                            <th>longtitude</th>
+                                            <th>createtime</th>
+                                            <th>operation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="gradeX">
-                                            <td>Amaze UI 模式窗口</td>
-                                            <td>张鹏飞</td>
-                                            <td>2016-09-26</td>
+                                    {% for d in data %}
+		                                <tr>
+			                                <td>{{d[0]}}</td>
+			                                <td class='wd100'>{{d[1]}}</td>
+			                                <td>{{d[2]}}</td>
+			                                <td>{{d[3]}}</td>
+                                            <td>{{d[4]}}</td>
+                                            <td>{{d[5]}}</td>
                                             <td>
                                                 <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
+                                                    <a href="javascript:">
                                                         <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr class="even gradeC">
-                                            <td>有适配微信小程序的计划吗</td>
-                                            <td>天纵之人</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="gradeX">
-                                            <td>请问有没有amazeui 分享插件</td>
-                                            <td>王宽师</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>关于input输入框的问题</td>
-                                            <td>着迷</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>有没有发现官网上的下载包不好用</td>
-                                            <td>醉里挑灯看键</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="even gradeC">
-                                            <td>我建议WEB版本文件引入问题</td>
-                                            <td>罢了</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <!-- more data -->
+		                            {% endfor %}
                                     </tbody>
                                 </table>
+                                {% endif %}
 
                             </div>
                         </div>

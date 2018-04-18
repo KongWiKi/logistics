@@ -6,6 +6,7 @@
 '''
 from flask import render_template, jsonify
 from  . import main
+from app.data.dataMysql import indexTable
 
 import pymysql
 
@@ -26,7 +27,8 @@ def cursors():
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    results, allCount, titleCount, iccardCount = indexTable()
+    return render_template('index.html',data=results,allCount=allCount,titleCount=titleCount,iccardCount=iccardCount)
 
 @main.route('/testData')
 def test():
@@ -47,6 +49,10 @@ def chart():
 @main.route('/table')
 def table():
     return render_template('tables.html')
+
+@main.route('/datatable')
+def calendar():
+    return render_template('table-list.html')
 
 @main.route('/login')
 def login():

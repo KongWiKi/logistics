@@ -32,8 +32,26 @@ def alarmtype_numbers():
         num = items[0]
         titleCount.append(title)
         numCount.append(num)
+    cursor.close()
     return titleCount,numCount
 
+def indexTable():
+    cursor = cursors()
+    querySql = 'select distinct(imei),speed,title,lat,lng,createtime from lct_event limit 10'
+    cursor.execute(querySql)
+    results = cursor.fetchall()
+    allCountSql = 'select count(*) from lct_event'
+    cursor.execute(allCountSql)
+    allCount = cursor.fetchone()[0]
+    titleSql = 'select count(distinct(title)) from lct_event'
+    cursor.execute(titleSql)
+    titleCount = cursor.fetchone()[0]
+    iccardSql = 'select count(distinct(iccard)) from lct_event'
+    cursor.execute(iccardSql)
+    iccardCount = cursor.fetchone()[0]
+    cursor.close()
+    return results,allCount,titleCount,iccardCount
+
 if __name__ == '__main__':
-    s = alarmtype_numbers()
-    print(s[0])
+    s = indexTable()
+    print(s)

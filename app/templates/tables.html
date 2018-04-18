@@ -14,6 +14,7 @@
     <link rel="apple-touch-icon-precomposed" href="../static/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <script src="../static/js/echarts.min.js"></script>
+    <script src="../static/js/echarts-liquidfill.min.js"></script>
     <link rel="stylesheet" href="../static/css/amazeui.min.css" />
     <link rel="stylesheet" href="../static/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="../static/css/app.css">
@@ -130,44 +131,44 @@
                     </a>
                 </li>
                 <!--下拉分割-->
-                <li class="sidebar-nav-link">
-                    <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
-                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-                    </a>
-                    <ul class="sidebar-nav sidebar-nav-sub">
-                        <li class="sidebar-nav-link">
-                            <a href="table-list.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
-                            </a>
-                        </li>
-
-                        <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 图文列表
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <!--注册-->
-                <li class="sidebar-nav-link">
-                    <a href="sign-up.html">
-                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册
-                        <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>
-                    </a>
-                </li>
-                <!--登录-->
-                <li class="sidebar-nav-link">
-                    <a href="login.html">
-                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
-                    </a>
-                </li>
-                <!--404-->
-                <li class="sidebar-nav-link">
-                    <a href="404.html">
-                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 404错误
-                    </a>
-                </li>
+{#                <li class="sidebar-nav-link">#}
+{#                    <a href="javascript:;" class="sidebar-nav-sub-title">#}
+{#                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表#}
+{#                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>#}
+{#                    </a>#}
+{#                    <ul class="sidebar-nav sidebar-nav-sub">#}
+{#                        <li class="sidebar-nav-link">#}
+{#                            <a href="table-list.html">#}
+{#                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表#}
+{#                            </a>#}
+{#                        </li>#}
+{##}
+{#                        <li class="sidebar-nav-link">#}
+{#                            <a href="table-list-img.html">#}
+{#                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 图文列表#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <!--注册-->#}
+{#                <li class="sidebar-nav-link">#}
+{#                    <a href="sign-up.html">#}
+{#                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册#}
+{#                        <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>#}
+{#                    </a>#}
+{#                </li>#}
+{#                <!--登录-->#}
+{#                <li class="sidebar-nav-link">#}
+{#                    <a href="login.html">#}
+{#                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录#}
+{#                    </a>#}
+{#                </li>#}
+{#                <!--404-->#}
+{#                <li class="sidebar-nav-link">#}
+{#                    <a href="404.html">#}
+{#                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 404错误#}
+{#                    </a>#}
+{#                </li>#}
 
             </ul>
         </div>
@@ -193,7 +194,7 @@
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-6">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">折线</div>
+                                <div class="widget-title am-fl">每天的事件量统计</div>
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
@@ -207,13 +208,13 @@
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-6">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">第三个</div>
+                                <div class="widget-title am-fl">车速的大概分布</div>
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
                             </div>
                             <div class="widget-body am-fr">
-                                <div style="height: 300px" class="" id="tpl-echarts-Pie"></div>
+                                <div style="height: 300px" class="" id="tpl-echarts-Bar"></div>
                             </div>
                         </div>
                     </div>
@@ -222,374 +223,37 @@
 
                 <div class="row">
 
-                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-6">
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-8">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">基本边框</div>
+                                <div class="widget-title am-fl">行驶里程、时间、速度关系</div>
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
                             </div>
-                            <div class="widget-body  widget-body-lg am-fr">
-
-                                <table width="100%" class="am-table am-table-compact am-table-bordered tpl-table-black " id="example-r">
-                                    <thead>
-                                        <tr>
-                                            <th>文章标题</th>
-                                            <th>作者</th>
-                                            <th>时间</th>
-                                            <th>操作</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="gradeX">
-                                            <td>Amaze UI 模式窗口</td>
-                                            <td>张鹏飞</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>有适配微信小程序的计划吗</td>
-                                            <td>天纵之人</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="gradeX">
-                                            <td>请问有没有amazeui 分享插件</td>
-                                            <td>王宽师</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>关于input输入框的问题</td>
-                                            <td>着迷</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>有没有发现官网上的下载包不好用</td>
-                                            <td>醉里挑灯看键</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="even gradeC">
-                                            <td>我建议WEB版本文件引入问题</td>
-                                            <td>罢了</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <!-- more data -->
-                                    </tbody>
-                                </table>
-
+                            <div class="widget-body am-fr">
+                                <div style="height: 300px" class="" id="tpl-echarts-B"></div>
                             </div>
                         </div>
                     </div>
 
-
-
-                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-6">
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-4">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">圆角斑马线边框</div>
+                                <div class="widget-title am-fl">不同车队司机打卡率</div>
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
                             </div>
-                            <div class="widget-body  widget-body-lg am-fr">
-
-                                <table width="100%" class="am-table am-table-compact am-table-bordered am-table-radius am-table-striped tpl-table-black " id="example-r">
-                                    <thead>
-                                        <tr>
-                                            <th>文章标题</th>
-                                            <th>作者</th>
-                                            <th>时间</th>
-                                            <th>操作</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="gradeX">
-                                            <td>Amaze UI 模式窗口</td>
-                                            <td>张鹏飞</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>有适配微信小程序的计划吗</td>
-                                            <td>天纵之人</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="gradeX">
-                                            <td>请问有没有amazeui 分享插件</td>
-                                            <td>王宽师</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>关于input输入框的问题</td>
-                                            <td>着迷</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>有没有发现官网上的下载包不好用</td>
-                                            <td>醉里挑灯看键</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="even gradeC">
-                                            <td>我建议WEB版本文件引入问题</td>
-                                            <td>罢了</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <!-- more data -->
-                                    </tbody>
-                                </table>
-
+                            <div class="widget-body am-fr">
+                                <div style="height: 300px" class="" id="tpl-echarts-Water"></div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
 
-
-                <div class="row">
-
-                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-                        <div class="widget am-cf">
-                            <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">斑马线</div>
-                                <div class="widget-function am-fr">
-                                    <a href="javascript:;" class="am-icon-cog"></a>
-                                </div>
-                            </div>
-                            <div class="widget-body  widget-body-lg am-fr">
-
-                                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
-                                    <thead>
-                                        <tr>
-                                            <th>文章标题</th>
-                                            <th>作者</th>
-                                            <th>时间</th>
-                                            <th>操作</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="gradeX">
-                                            <td>Amaze UI 模式窗口</td>
-                                            <td>张鹏飞</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>有适配微信小程序的计划吗</td>
-                                            <td>天纵之人</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="gradeX">
-                                            <td>请问有没有amazeui 分享插件</td>
-                                            <td>王宽师</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>关于input输入框的问题</td>
-                                            <td>着迷</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>有没有发现官网上的下载包不好用</td>
-                                            <td>醉里挑灯看键</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="even gradeC">
-                                            <td>我建议WEB版本文件引入问题</td>
-                                            <td>罢了</td>
-                                            <td>2016-09-26</td>
-                                            <td>
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <!-- more data -->
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                </div>
 
             </div>
         </div>

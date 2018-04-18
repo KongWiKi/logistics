@@ -54,10 +54,14 @@ def indexTable():
     iccardCount = cursor.fetchone()[0]
     cursor.close()
     return results,allCount,titleCount,iccardCount
-#综合分析
+"""
+###############################
+综合分析
+###############################
+"""
 def dayCount():
     cursor = cursors()
-    querySql = ' select starttime from lct_event limit 20000'
+    querySql = ' select starttime from lct_event'
     cursor.execute(querySql)
     dayResult = cursor.fetchall()
     # print(dayResult)
@@ -86,12 +90,33 @@ def dayCount():
 #车速统计
 def speedCount():
     cursor = cursors()
-    speedSql = 'select speed from lct_event'
+    speeds = []
+    speedNum = []
+    speedSql = 'select count(speed) ,speed from lct_event group by 2'
     cursor.execute(speedSql)
     speedResult = cursor.fetchall()
-    
+    for row in speedResult:
+        speeds.append(row[1])
+        speedNum.append(row[0])
+    cursor.close()
+    return speeds,speedNum
+
+#经纬度
+def longLat():
+    cursor = cursors()
+    gecoords = [] #经纬度搜集
+    longLatSql = 'select lng,lat from lct_event limit 100'
+    cursor.execute(longLatSql)
+    longLatResults = cursor.fetchall()
+    for l in longLatResults:
+        lng = l[0]
+        lat = l[1]
+        gecoord = [float(lng),float(lat)]
+        gecoords.append(gecoord)
+    print(gecoords)
+    return gecoords
 
 
 if __name__ == '__main__':
-    s = dayCount()
-    print(s)
+    s = longLat()
+

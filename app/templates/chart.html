@@ -14,6 +14,8 @@
     <link rel="apple-touch-icon-precomposed" href="../static/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <script src="../static/js/echarts.min.js"></script>
+    <script src="../static/js/bmap.js"></script>
+    <script src="../static/js/echarts-liquidfill.min.js"></script>
     <link rel="stylesheet" href="../static/css/amazeui.min.css" />
     <link rel="stylesheet" href="../static/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="../static/css/app.css">
@@ -235,44 +237,44 @@
                     </a>
                 </li>
                 <!--下拉分割-->
-                <li class="sidebar-nav-link">
-                    <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
-                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-                    </a>
-                    <ul class="sidebar-nav sidebar-nav-sub">
-                        <li class="sidebar-nav-link">
-                            <a href="table-list.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
-                            </a>
-                        </li>
-
-                        <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 图文列表
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <!--注册-->
-                <li class="sidebar-nav-link">
-                    <a href="sign-up.html">
-                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册
-                        <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>
-                    </a>
-                </li>
-                <!--登录-->
-                <li class="sidebar-nav-link">
-                    <a href="login.html">
-                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
-                    </a>
-                </li>
-                <!--404-->
-                <li class="sidebar-nav-link">
-                    <a href="404.html">
-                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 404错误
-                    </a>
-                </li>
+{#                <li class="sidebar-nav-link">#}
+{#                    <a href="javascript:;" class="sidebar-nav-sub-title">#}
+{#                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表#}
+{#                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>#}
+{#                    </a>#}
+{#                    <ul class="sidebar-nav sidebar-nav-sub">#}
+{#                        <li class="sidebar-nav-link">#}
+{#                            <a href="table-list.html">#}
+{#                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表#}
+{#                            </a>#}
+{#                        </li>#}
+{##}
+{#                        <li class="sidebar-nav-link">#}
+{#                            <a href="table-list-img.html">#}
+{#                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 图文列表#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <!--注册-->#}
+{#                <li class="sidebar-nav-link">#}
+{#                    <a href="sign-up.html">#}
+{#                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册#}
+{#                        <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>#}
+{#                    </a>#}
+{#                </li>#}
+{#                <!--登录-->#}
+{#                <li class="sidebar-nav-link">#}
+{#                    <a href="login.html">#}
+{#                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录#}
+{#                    </a>#}
+{#                </li>#}
+{#                <!--404-->#}
+{#                <li class="sidebar-nav-link">#}
+{#                    <a href="404.html">#}
+{#                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 404错误#}
+{#                    </a>#}
+{#                </li>#}
 
             </ul>
         </div>
@@ -377,7 +379,19 @@
                     </div>
                 </div>
 
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title am-fl">水球</div>
+                        <div class="widget-function am-fr">
+                            <a href="javascript:;" class="am-icon-cog"></a>
+                        </div>
+                    </div>
+                    <div class="widget-body am-fr">
+                        <div style="height: 400px" id="tpl-echarts-Water">
 
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>

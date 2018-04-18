@@ -201,44 +201,48 @@
 
             <!-- 菜单 -->
             <ul class="sidebar-nav">
-                <li class="sidebar-nav-heading">Components <span class="sidebar-nav-heading-info"> 附加组件</span></li>
+                <li class="sidebar-nav-heading">菜单</li>
+                <!--首页-->
                 <li class="sidebar-nav-link">
-                    <a href="index.html">
+                    <a href="/" >
                         <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
                     </a>
                 </li>
+                <!--综合分析-->
                 <li class="sidebar-nav-link">
-                    <a href="tables.html">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 表格
+                    <a href="/table">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 综合分析
                     </a>
                 </li>
+                <!--预警通告-->
                 <li class="sidebar-nav-link">
-                    <a href="calendar.html">
-                        <i class="am-icon-calendar sidebar-nav-link-logo"></i> 日历
+                    <a href="/datatable" class="active">
+                        <i class="am-icon-calendar sidebar-nav-link-logo"></i> 预警通告
                     </a>
                 </li>
+                <!--综合评判-->
                 <li class="sidebar-nav-link">
-                    <a href="form.html">
-                        <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 表单
+                    <a href="/form">
+                        <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 综合评判
 
                     </a>
                 </li>
+                <!--下拉分割-->
                 <li class="sidebar-nav-link">
-                    <a href="chart.html">
+                    <a href="/chart">
                         <i class="am-icon-bar-chart sidebar-nav-link-logo"></i> 图表
 
                     </a>
                 </li>
-
-                <li class="sidebar-nav-heading">Page<span class="sidebar-nav-heading-info"> 常用页面</span></li>
+                <!--下拉分割-->
                 <li class="sidebar-nav-link">
-                    <a href="javascript:;" class="sidebar-nav-sub-title active">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
-                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico sidebar-nav-sub-ico-rotate"></span>
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
-                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                    <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="table-list.html" class="sub-active">
+                            <a href="table-list.html">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
                             </a>
                         </li>
@@ -250,17 +254,20 @@
                         </li>
                     </ul>
                 </li>
+                <!--注册-->
                 <li class="sidebar-nav-link">
                     <a href="sign-up.html">
                         <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册
                         <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>
                     </a>
                 </li>
+                <!--登录-->
                 <li class="sidebar-nav-link">
                     <a href="login.html">
                         <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
                     </a>
                 </li>
+                <!--404-->
                 <li class="sidebar-nav-link">
                     <a href="404.html">
                         <i class="am-icon-tv sidebar-nav-link-logo"></i> 404错误
@@ -278,7 +285,7 @@
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title  am-cf">文章列表</div>
+                                <div class="widget-title  am-cf">驾驶数据一览表</div>
 
 
                             </div>
@@ -288,10 +295,8 @@
                                     <div class="am-form-group">
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
-                                                <button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button>
                                                 <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
                                                 <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-archive"></span> 审核</button>
-                                                <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
                                             </div>
                                         </div>
                                     </div>

@@ -51,8 +51,12 @@ def table():
     return render_template('tables.html')
 
 @main.route('/datatable')
-def calendar():
+def datatable():
     return render_template('table-list.html')
+
+@main.route('/form')
+def form():
+    return render_template('form.html')
 
 @main.route('/login')
 def login():

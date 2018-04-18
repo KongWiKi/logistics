@@ -41,11 +41,6 @@ var pageData = {
             dom: 'ti'
         });
 
-
-        // ==========================
-        // 百度图表A http://echarts.baidu.com/
-        // ==========================
-
         var echartA=echarts.init(document.getElementById('tpl-echarts'));
 	    echartA.setOption(
          {
@@ -114,73 +109,153 @@ var pageData = {
         })
     });
 
-        var echartB=echarts.init(document.getElementById('tpl-echarts-B'));
-	    echartB.setOption(
-         {
-            title:{
-                text:'异步加载数据'
-            },
-            lengend:{
-                data:['蒸发量','降水量']
-            },
-            tooltip:{
-                show:true,
-                trigger:'item'
-            },
-            toolbox:{
-                show:true,
-                feature:{
-                    saveAsImage:{
-                        show:true
-                    },
-                    dataView:{
-                        show:true
-                    },
-                    dataZoom:{
-                        show:true
-                    },
-                    magicType:{
-                        type:['line','bar']
-                    },
-                    restore:{
-                        show:true
-                    }
-                }
-            },
-            xAxis:{
-                data:[]
-            },
-            yAxis:{},
-            series:[
-                {
-                    name:'蒸发量',
-                    type:'bar',
-                    data:[]
-                },{
-                    name:'降水量',
-                    type:'line',
-                    data:[]
-                }
-            ]
+        var echartsBar=echarts.init(document.getElementById('tpl-echarts-Bar'));
+        var dataAxis = ['六月','七月','八月','九月','十月'];
+        var data = [654,153618,160392,133366,148178];
+        var yMax = 500;
+        var dataShadow = [];
+        for (var i = 0; i < data.length; i++) {
+            dataShadow.push(yMax);
         }
-        );
-        //异步加载数据
-        echartB.showLoading();// 显示加载动画
-        $.get('/testData').done(function (data) {
-        echartB.hideLoading();// 隐藏加载动画
-        echartB.setOption({
-            xAxis:{
-                data:data.mon
+        optionBar = {
+    xAxis: {
+        data: [],
+        axisLabel: {
+            inside: true,
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        z: 10
+    },
+    yAxis: {
+        axisLine: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#999'
+            }
+        }
+    },
+    dataZoom: [
+        {
+            type: 'inside'
+        }
+    ],
+    series: [
+        { // For shadow
+            type: 'bar',
+            itemStyle: {
+                normal: {color: 'rgba(0,0,0,0.05)'}
             },
-            series:[{
-                name:'蒸发量',
-                data:data.zshui.map(parseFloat)// 转化为数字（注意map）
-            },{
-                name:'降水量',
-                data:data.jshui.map(parseFloat)// 转化为数字（注意map）
-            }]
-        })
+            barGap:'-100%',
+            barCategoryGap:'40%',
+            data: dataShadow,
+            animation: false
+        },
+        {
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#83bff6'},
+                            {offset: 0.5, color: '#188df0'},
+                            {offset: 1, color: '#188df0'}
+                        ]
+                    )
+                },
+                emphasis: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#2378f7'},
+                            {offset: 0.7, color: '#2378f7'},
+                            {offset: 1, color: '#83bff6'}
+                        ]
+                    )
+                }
+            },
+            data: []
+        }
+    ]
+};
+        echartsBar.setOption(optionBar);
+        //异步加载数据
+        echartsBar.showLoading();// 显示加载动画
+        $.get('/data/alarmtypeNumbers').done(function (data) {
+        echartsBar.hideLoading();// 隐藏加载动画
+        echartsBar.setOption({
+            xAxis: {
+        data: data.titleCount,
+        axisLabel: {
+            inside: true,
+            textStyle: {
+                color: '#fff'
+            }
+        }},
+             series: [
+        { // For shadow
+            type: 'bar',
+            itemStyle: {
+                normal: {color: 'rgba(0,0,0,0.05)'}
+            },
+            barGap:'-100%',
+            barCategoryGap:'40%',
+            data: dataShadow,
+            animation: false
+        },
+        {
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#83bff6'},
+                            {offset: 0.5, color: '#188df0'},
+                            {offset: 1, color: '#188df0'}
+                        ]
+                    )
+                },
+                emphasis: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#2378f7'},
+                            {offset: 0.7, color: '#2378f7'},
+                            {offset: 1, color: '#83bff6'}
+                        ]
+                    )
+                }
+            },
+            data: data.numCount
+        }
+    ]
+        });
     });
+        // Enable data zoom when user click bar.
+        var zoomSize = 2;
+        echartsBar.on('click', function (params) {
+    console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+    echartsBar.dispatchAction({
+        type: 'dataZoom',
+        startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+        endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+    });
+});
+
     },
 
      // ===============================================
@@ -556,7 +631,7 @@ var pageData = {
                     type: 'line',
                     stack: '总量',
                     areaStyle: { normal: {} },
-                    data: [120, 132, 101, 134, 90, 230, 210],
+                    data: [100, 132, 101, 134, 90, 230, 210],
                     itemStyle: {
                         normal: {
                             color: '#59aea2'
@@ -593,6 +668,181 @@ var pageData = {
             ]
         };
         echartsA.setOption(option);
+
+        var echartsBar=echarts.init(document.getElementById('tpl-echarts-Bar'));
+        var dataAxis = ['六月','七月','八月','九月','十月'];
+        var data = [65720,153618,160392,133366,148178];
+        var yMax = 500;
+        var dataShadow = [];
+        for (var i = 0; i < data.length; i++) {
+            dataShadow.push(yMax);
+        }
+        optionBar = {
+    title: {
+        x:'center',
+        y:'top',
+        textAlign:'left',
+        text: '每月的人流量'
+    },
+    xAxis: {
+        data: dataAxis,
+        axisLabel: {
+            inside: true,
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        z: 10
+    },
+    yAxis: {
+        axisLine: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#999'
+            }
+        }
+    },
+    dataZoom: [
+        {
+            type: 'inside'
+        }
+    ],
+    series: [
+        { // For shadow
+            type: 'bar',
+            itemStyle: {
+                normal: {color: 'rgba(0,0,0,0.05)'}
+            },
+            barGap:'-100%',
+            barCategoryGap:'40%',
+            data: dataShadow,
+            animation: false
+        },
+        {
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#83bff6'},
+                            {offset: 0.5, color: '#188df0'},
+                            {offset: 1, color: '#188df0'}
+                        ]
+                    )
+                },
+                emphasis: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#2378f7'},
+                            {offset: 0.7, color: '#2378f7'},
+                            {offset: 1, color: '#83bff6'}
+                        ]
+                    )
+                }
+            },
+            data: data
+        }
+    ]
+};
+        echartsBar.setOption(optionBar);
+        // Enable data zoom when user click bar.
+        var zoomSize = 2;
+        echartsBar.on('click', function (params) {
+    console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+    echartsBar.dispatchAction({
+        type: 'dataZoom',
+        startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+        endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+    });
+});
+
+        var echartsPie = echarts.init(document.getElementById('tpl-echarts-Pie'));
+        optionPie = {
+
+
+    title: {
+        text: 'Customized Pie',
+        left: 'center',
+        top: 20,
+        textStyle: {
+            color: '#ccc'
+        }
+    },
+
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+
+    visualMap: {
+        show: false,
+        min: 80,
+        max: 600,
+        inRange: {
+            colorLightness: [0, 1]
+        }
+    },
+    series : [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius : '55%',
+            center: ['50%', '50%'],
+            data:[
+                {value:335, name:'直接访问'},
+                {value:310, name:'邮件营销'},
+                {value:274, name:'联盟广告'},
+                {value:235, name:'视频广告'},
+                {value:400, name:'搜索引擎'}
+            ].sort(function (a, b) { return a.value - b.value; }),
+            roseType: 'radius',
+            label: {
+                normal: {
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    },
+                    smooth: 0.2,
+                    length: 10,
+                    length2: 20
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#c23531',
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
+
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) {
+                return Math.random() * 200;
+            }
+        }
+    ]
+        };
+        echartsPie.setOption(optionPie);
     }
 };
 

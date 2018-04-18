@@ -7,13 +7,12 @@
 ### 设计技术
 
 1. spark
-
 2. python3.5+
-
 3. flask
+4. echarts
+5. redis
+6. kafka
 
-4. redis
 
-5. kafka
+### 目前实现效果
 
-   ​

@@ -61,7 +61,7 @@ def indexTable():
 """
 def dayCount():
     cursor = cursors()
-    querySql = ' select starttime from lct_event'
+    querySql = ' select starttime from lct_event limit 2000'
     cursor.execute(querySql)
     dayResult = cursor.fetchall()
     # print(dayResult)

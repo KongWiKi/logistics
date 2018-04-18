@@ -4,7 +4,10 @@
 @time: 18-4-18 下午12:57
 @contact: kongwiki@163.com
 '''
+from collections import Counter
 import pymysql
+import time
+
 
 def cursors():
     host='localhost'
@@ -51,7 +54,44 @@ def indexTable():
     iccardCount = cursor.fetchone()[0]
     cursor.close()
     return results,allCount,titleCount,iccardCount
+#综合分析
+def dayCount():
+    cursor = cursors()
+    querySql = ' select starttime from lct_event limit 20000'
+    cursor.execute(querySql)
+    dayResult = cursor.fetchall()
+    # print(dayResult)
+    tmp = [] #暂存数据库读取的时间
+    days = [] #日期列表
+    counts = [] #日期values
+    for item in dayResult:
+        day = item[0].split(' ')[0]
+        # 原始时间
+        timestamp = time.mktime(time.strptime(day, '%Y-%m-%d'))
+        # 数字型时间
+        times = int(timestamp)
+        tmp.append(times)
+    dayCounts = Counter(tmp)
+    dayCounts = sorted(dayCounts.items(),key=lambda x:x[0],reverse=False)
+    for row in dayCounts:
+        time_local = time.localtime(row[0])
+        dt = time.strftime("%Y-%m-%d", time_local)
+        days.append(dt)
+        counts.append(row[1])
+    # print(days)
+    # print(counts)
+    cursor.close()
+    return days,counts
+
+#车速统计
+def speedCount():
+    cursor = cursors()
+    speedSql = 'select speed from lct_event'
+    cursor.execute(speedSql)
+    speedResult = cursor.fetchall()
+    
+
 
 if __name__ == '__main__':
-    s = indexTable()
+    s = dayCount()
     print(s)

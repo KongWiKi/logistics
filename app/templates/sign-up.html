@@ -39,28 +39,31 @@
         </div>
         <div class="tpl-login">
             <div class="tpl-login-content">
-                <div class="tpl-login-title">注册用户</div>
+                <div class="tpl-login-title">用户注册</div>
                 <span class="tpl-login-content-info">
                   创建一个新的用户
               </span>
 
+                <form class="am-form tpl-form-line-form" method="post" role="form">
+                    {{ form.hidden_tag() }}
+{#                    <div class="am-form-group">#}
+{#                        {{ form.id(placeholder="请输入ID号") }}#}
+{#                        <input type="text" class="tpl-form-input" id="user-name" placeholder="邮箱">#}
+{#                    </div>#}
 
-                <form class="am-form tpl-form-line-form">
                     <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="邮箱">
-
+{#                        {{ form.username(placeholder="请输入用户名") }}#}
+                        <input id="username" name="username" class="tpl-form-input" required type="text"  placeholder="用户名">
                     </div>
 
                     <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="用户名">
+{#                        {{ form.password(placeholder="请输入密码") }}#}
+                        <input id="password" name="password" class="tpl-form-input"  required type="password" placeholder="请输入密码">
                     </div>
 
                     <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="user-name" placeholder="请输入密码">
-                    </div>
 
-                    <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="user-name" placeholder="再次输入密码">
+                        <input id="password2" name="password2" class="tpl-form-input" required type="password" type="password" placeholder="再次输入密码">
                     </div>
 
                     <div class="am-form-group tpl-login-remember-me">
@@ -73,14 +76,8 @@
                     </div>
 
 
-
-
-
-
                     <div class="am-form-group">
-
-                        <button type="button" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交</button>
-
+                        <button id="submit" name="submit" type="submit" value="Register" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" >提交</button>
                     </div>
                 </form>
             </div>

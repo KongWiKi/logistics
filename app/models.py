@@ -48,7 +48,7 @@ class User(db.Model):
         return True
 
     def is_anonymous(self):
-        """Check the user's login status whether is anonymous."""
+        """Check the user's author status whether is anonymous."""
 
         if isinstance(self, AnonymousUserMixin):
             return True

@@ -250,8 +250,8 @@ var pageData = {
         // Enable data zoom when user click bar.
         var zoomSize = 2;
         echartsBar.on('click', function (params) {
-    console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
-    echartsBar.dispatchAction({
+        console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+        echartsBar.dispatchAction({
         type: 'dataZoom',
         startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
         endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
@@ -386,8 +386,8 @@ var pageData = {
                 color: new echarts.graphic.LinearGradient(
                     0, 0, 0, 1,
                     [
-                        {offset: 0, color: '#FF00FF'},
-                        {offset: 1, color: '#FF0000'}
+                        {offset: 0, color: '#83bff6'},
+                        {offset: 1, color: '#188df0'}
                     ]
                 )
             }
@@ -419,8 +419,8 @@ var pageData = {
                 color: new echarts.graphic.LinearGradient(
                     0, 0, 0, 1,
                     [
-                        {offset: 0, color: '#FF00FF'},
-                        {offset: 1, color: '#FF0000'}
+                        {offset: 0, color: '#83bff6'},
+                        {offset: 1, color: '#188df0'}
                     ]
                 )
             }
@@ -908,7 +908,7 @@ var pageData = {
                     type: 'line',
                     stack: '总量',
                     areaStyle: { normal: {} },
-                    data: [100, 132, 101, 134, 90, 230, 210],
+                    data: [200, 132, 101, 134, 90, 230, 210],
                     itemStyle: {
                         normal: {
                             color: '#59aea2'
@@ -1079,7 +1079,7 @@ var pageData = {
             radius : '55%',
             center: ['50%', '50%'],
             data:[
-                {value:335, name:'直接访问'},
+                {value:100, name:'直接访问'},
                 {value:310, name:'邮件营销'},
                 {value:274, name:'联盟广告'},
                 {value:235, name:'视频广告'},

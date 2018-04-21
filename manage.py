@@ -30,5 +30,5 @@ def test():
 
 
 if __name__ == '__main__':
-    # app.run(debug=True)
-    manager.run()
+    app.run(debug=True,port=4000)
+    # manager.run()

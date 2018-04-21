@@ -6,6 +6,6 @@
 '''
 from flask import Blueprint
 
-user = Blueprint('user',__name__)
+author = Blueprint('author',__name__)
 
 from . import views

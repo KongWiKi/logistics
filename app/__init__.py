@@ -20,7 +20,7 @@ bootstrap=Bootstrap()
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'auth.author'
 login_manager.login_message = u"请登录！"
 login_manager.login_message_category = "info"
 
@@ -40,12 +40,12 @@ def create_app(config_name):
 
 
     from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    app.register_blueprint(main_blueprint,url_prefix='/main')
 
     from .data import data as data_blueprint
     app.register_blueprint(data_blueprint, url_prefix='/data')
 
-    from .login import user as user_blueprint
-    app.register_blueprint(user_blueprint, url_prefix='/user')
+    from .author import author as author_blueprint
+    app.register_blueprint(author_blueprint,)
 
     return app

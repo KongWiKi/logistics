@@ -29,9 +29,9 @@ def datatable():
 def form():
     return render_template('form.html')
 
-# @main.route('/login')
-# def login():
-#     return render_template('login.html')
+# @main.route('/author')
+# def author():
+#     return render_template('author.html')
 
 # @main.route('/table')
 # def datatable():

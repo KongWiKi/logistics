@@ -50,7 +50,12 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
-                            <a href="javascript:;">欢迎您, <span>KongWiki</span> </a>
+                            <a href="javascript:;">欢迎您,
+                                {% if current_user.is_authenticated %}
+                                <span>{{ current_user.username }}</span> </a>
+                                {% else  %}
+                                <span>Stranger</span>
+                                {% endif %}
                         </li>
 
 {#                        <!-- 新邮件 -->#}
@@ -160,7 +165,7 @@
 
                         <!-- 退出 -->
                         <li class="am-text-sm">
-                            <a href="javascript:;">
+                            <a href="/">
                                 <span class="am-icon-sign-out"></span> 退出
                             </a>
                         </li>
@@ -187,14 +192,18 @@
         <div class="left-sidebar">
             <!-- 用户信息 -->
             <div class="tpl-sidebar-user-panel">
+                {% if current_user.is_authenticated %}
                 <div class="tpl-user-panel-slide-toggleable">
                     <div class="tpl-user-panel-profile-picture">
                         <img src="../static/img/user00.png" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
-              <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-              KongWiki
-          </span>
+                        <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+                            {{ current_user.username }}
+                            {% else %}
+                                Stranget
+                            {% endif %}
+                    </span>
                     <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
                 </div>
             </div>
@@ -204,32 +213,32 @@
                 <li class="sidebar-nav-heading">菜单</li>
                 <!--首页-->
                 <li class="sidebar-nav-link">
-                    <a href="/" class="active">
+                    <a href="/main" class="active">
                         <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
                     </a>
                 </li>
                 <!--综合分析-->
                 <li class="sidebar-nav-link">
-                    <a href="/table">
+                    <a href="/main/table">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 综合分析
                     </a>
                 </li>
                 <!--预警通告-->
                 <li class="sidebar-nav-link">
-                    <a href="/datatable">
+                    <a href="/main/datatable">
                         <i class="am-icon-calendar sidebar-nav-link-logo"></i> 预警通告
                     </a>
                 </li>
                 <!--综合评判-->
                 <li class="sidebar-nav-link">
-                    <a href="/form">
+                    <a href="/main/form">
                         <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 综合评判
 
                     </a>
                 </li>
                 <!--下拉分割-->
                 <li class="sidebar-nav-link">
-                    <a href="/chart">
+                    <a href="/main/chart">
                         <i class="am-icon-bar-chart sidebar-nav-link-logo"></i> 图表
 
                     </a>
@@ -263,7 +272,7 @@
 {#                </li>#}
 {#                <!--登录-->#}
 {#                <li class="sidebar-nav-link">#}
-{#                    <a href="login.html">#}
+{#                    <a href="author.html">#}
 {#                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录#}
 {#                    </a>#}
 {#                </li>#}

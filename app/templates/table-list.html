@@ -13,7 +13,9 @@
     <link rel="icon" type="image/png" href="../static/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="../static/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <script src="../static/js/echarts.min.js"></script>
+    <script src="../static/js/echarts.js"></script>
+    <script src="../static/js/bmap.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tEqeIeVNzG89r8Pvua7GyQiUWxxnqCYp"></script>
     <link rel="stylesheet" href="../static/css/amazeui.min.css" />
     <link rel="stylesheet" href="../static/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="../static/css/app.css">
@@ -21,7 +23,7 @@
 
 </head>
 
-<body data-type="widgets">
+<body data-type="alarm">
     <script src="../static/js/theme.js"></script>
     <div class="am-g tpl-g">
         <!-- 头部 -->
@@ -137,53 +139,13 @@
 
                     </a>
                 </li>
-                <!--下拉分割-->
-{#                <li class="sidebar-nav-link">#}
-{#                    <a href="javascript:;" class="sidebar-nav-sub-title">#}
-{#                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表#}
-{#                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>#}
-{#                    </a>#}
-{#                    <ul class="sidebar-nav sidebar-nav-sub">#}
-{#                        <li class="sidebar-nav-link">#}
-{#                            <a href="table-list.html">#}
-{#                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表#}
-{#                            </a>#}
-{#                        </li>#}
-{##}
-{#                        <li class="sidebar-nav-link">#}
-{#                            <a href="table-list-img.html">#}
-{#                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 图文列表#}
-{#                            </a>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                </li>#}
-{#                <!--注册-->#}
-{#                <li class="sidebar-nav-link">#}
-{#                    <a href="sign-up.html">#}
-{#                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册#}
-{#                        <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>#}
-{#                    </a>#}
-{#                </li>#}
-{#                <!--登录-->#}
-{#                <li class="sidebar-nav-link">#}
-{#                    <a href="author.html">#}
-{#                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录#}
-{#                    </a>#}
-{#                </li>#}
-{#                <!--404-->#}
-{#                <li class="sidebar-nav-link">#}
-{#                    <a href="404.html">#}
-{#                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 404错误#}
-{#                    </a>#}
-{#                </li>#}
+
 
             </ul>
         </div>
-
-
         <!-- 内容区域 -->
         <div class="tpl-content-wrapper">
-
+            <!--头部信息-->
             <div class="container-fluid am-cf">
                 <div class="row">
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
@@ -194,10 +156,10 @@
                 </div>
 
             </div>
-
+            <!--图表-->
             <div class="row-content am-cf">
                 <div class="row">
-                    <!--折线图-->
+                    <!--日历-->
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
@@ -207,7 +169,23 @@
                                 </div>
                             </div>
                             <div class="widget-body am-fr">
-                                <div style="height: 300px" class="" id="tpl-echarts-D"></div>
+                                <div style="height: 300px" class="" id="tpl-echarts"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--地图-->
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                        <div class="widget am-cf">
+                            <!--标题-->
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">地图</div>
+                                <div class="widget-function am-fr">
+                                    <a href="javascript:;" class="am-icon-cog"></a>
+                                </div>
+                            </div>
+                            <!--地图-->
+                            <div class="widget-body am-fr">
+                                <div style="height: 600px" class="" id="tpl-echarts-Map"></div>
                             </div>
                         </div>
                     </div>
@@ -220,17 +198,17 @@
 
                             </div>
                             <div class="widget-body  am-fr">
-
+                                <!--审核-->
                                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
                                     <div class="am-form-group">
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
-                                                <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
                                                 <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-archive"></span> 审核</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--下拉选择标签-->
                                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
                                     <div class="am-form-group tpl-table-list-select">
                                         <select data-am-selected="{btnSize: 'sm'}">
@@ -244,6 +222,7 @@
             </select>
                                     </div>
                                 </div>
+                                <!--搜索-->
                                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
                                         <input type="text" class="am-form-field ">
@@ -252,7 +231,7 @@
           </span>
                                     </div>
                                 </div>
-
+                                <!--表格标题-->
                                 <div class="am-u-sm-12">
                                     <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
                                         <thead>
@@ -359,8 +338,8 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <!--1\2\3\4页-->
                                 <div class="am-u-lg-12 am-cf">
-
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination">
                                             <li class="am-disabled"><a href="#">«</a></li>

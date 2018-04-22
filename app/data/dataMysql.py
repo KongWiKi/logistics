@@ -4,11 +4,17 @@
 @time: 18-4-18 下午12:57
 @contact: kongwiki@163.com
 '''
+import random
+import re
 from collections import Counter
 import pymysql
 import time
 
-
+"""
+###############################
+首页分析
+###############################
+"""
 def cursors():
     host='localhost'
     user='root'
@@ -105,7 +111,7 @@ def speedCount():
 def longLat():
     cursor = cursors()
     gecoords = [] #经纬度搜集
-    longLatSql = 'select lng,lat from lct_event limit 100'
+    longLatSql = 'select lng,lat from lct_event limit 10000'
     cursor.execute(longLatSql)
     longLatResults = cursor.fetchall()
     for l in longLatResults:
@@ -113,10 +119,33 @@ def longLat():
         lat = l[1]
         gecoord = [float(lng),float(lat)]
         gecoords.append(gecoord)
-    print(gecoords)
+    # print(gecoords)
     return gecoords
 
+"""
+###############################
+综合分析
+###############################
+"""
+#日历统计
+def calenderCount(year):
+    startYear = year + '-01-01'
+    endYear = str(int(year) + 1) + '-01-01'
+    date = int(time.mktime(time.strptime(startYear, '%Y-%m-%d')))
+    end = int(time.mktime(time.strptime(endYear, '%Y-%m-%d')))
+    dayTime = 3600 * 24
+    dataCalendar = []
+    for i in range(date, end, dayTime):
+        time_local = time.localtime(i)
+        day = time.strftime("%Y-%m-%d", time_local)
+        if re.match('\d{4}-11-1[1-7]', day):
+            value = random.randint(800, 1000) * 10
+            dataCalendar.append([day, value])
+        else:
+            value = random.randint(0, 900) * 10
+            dataCalendar.append([day, value])
+    return dataCalendar
 
 if __name__ == '__main__':
-    s = longLat()
+    s = calenderCount('2016')
 

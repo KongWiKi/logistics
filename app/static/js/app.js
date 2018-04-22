@@ -258,20 +258,19 @@ var pageData = {
     });
 });
 
-
-
     },
 
      // ===============================================
-    // 其他界面
+    // 综合分析页面图表
     // ===============================================
-    'widgets': function indexData() {
+    'widgets': function widgetsData() {
         $('#example-r').DataTable({
 
             bInfo: false, //页脚信息
             dom: 'ti'
         });
-        //折线图
+        //第一张图
+        //折线图 每天的事件量统计
         var echartA=echarts.init(document.getElementById('tpl-echarts-A'));
 	    echartA.setOption(
          {
@@ -326,7 +325,8 @@ var pageData = {
         })
         });
 
-        //饼图
+        //第二张图
+        //柱状图 车速的大概分布
         var echartsBar = echarts.init(document.getElementById('tpl-echarts-Bar'));
         echartsBar.setOption(
          {
@@ -431,6 +431,7 @@ var pageData = {
         });
 
         //第三张图
+        // 车速展示
         var echartsB = echarts.init(document.getElementById('tpl-echarts-B'));
 
         optionB = {
@@ -721,7 +722,7 @@ var pageData = {
         // echartsB.setOption(optionB);
 
         //第四张图
-        //水球
+        //水球 打卡
         var echartsWater = echarts.init(document.getElementById('tpl-echarts-Water'));
         optionWater = {
             series: [{
@@ -733,6 +734,268 @@ var pageData = {
         echartsWater.setOption(optionWater);
 
     },
+
+     // ===============================================
+    // 预警通告页面图表
+    // ===============================================
+    'alarm':function alarmData(){
+
+        //第一张图
+        //日历 车辆统计
+        var echartsB=echarts.init(document.getElementById('tpl-echarts'));
+        echartsB.setOption({
+        title: {
+        top: 30,
+        text: '车辆统计数据',
+        left: 'center',
+        textStyle: {
+            color: '#fff'
+        }
+    },
+        tooltip : {
+        trigger: 'item'
+    },
+        legend: {
+        top: '30',
+        left: '100',
+        data:['数量', 'Top'],
+        textStyle: {
+            color: '#fff'
+        }
+    },
+        calendar: [
+         {
+        top: 100,
+        left: 'center',
+        range: ['2016-04-01', '2016-12-31'],
+        splitLine: {
+            show: true,
+            lineStyle: {
+                color: '#000',
+                width: 4,
+                type: 'solid'
+            }
+        },
+        yearLabel: {
+            formatter: '2017',
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        itemStyle: {
+            normal: {
+                color: '#323c48',
+                borderWidth: 1,
+                borderColor: '#111'
+            }
+        }
+    }]
+
+        });
+        //异步加载数据
+        echartsB.showLoading();// 显示加载动画
+        $.get('/data/calendarData').done(function (data) {
+        echartsB.hideLoading();// 隐藏加载动画
+        echartsB.setOption({
+              series : [
+        {
+            name: '数量',
+            type: 'scatter',
+            coordinateSystem: 'calendar',
+            data: data,
+            symbolSize: function (val) {
+                return val[1] / 500;
+            },
+            itemStyle: {
+                normal: {
+                    color: '#87CEFA'
+                }
+            }
+        },
+
+
+        {
+            name: 'Top',
+            type: 'effectScatter',
+            coordinateSystem: 'calendar',
+            data: data.sort(function (a, b) {
+                return b[1] - a[1];
+            }).slice(0, 12),
+            symbolSize: function (val) {
+                return val[1] / 500;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            itemStyle: {
+                normal: {
+                    color: '#f4e925',
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            zlevel: 1
+        }
+    ]
+        })
+    });
+
+        //第二张图
+        // 地图
+        var echartsMap =echarts.init(document.getElementById('tpl-echarts-Map'));
+        optionMap= {
+        bmap: {
+        center: [106.914426, 36.31694],
+        zoom: 5,
+        roam: true,
+        mapStyle: {
+            'styleJson': [{
+                'featureType': 'water',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#031628'
+                }
+            }, {
+                'featureType': 'land',
+                'elementType': 'geometry',
+                'stylers': {
+                    'color': '#000102'
+                }
+            }, {
+                'featureType': 'highway',
+                'elementType': 'all',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'arterial',
+                'elementType': 'geometry.fill',
+                'stylers': {
+                    'color': '#000000'
+                }
+            }, {
+                'featureType': 'arterial',
+                'elementType': 'geometry.stroke',
+                'stylers': {
+                    'color': '#0b3d51'
+                }
+            }, {
+                'featureType': 'local',
+                'elementType': 'geometry',
+                'stylers': {
+                    'color': '#000000'
+                }
+            }, {
+                'featureType': 'railway',
+                'elementType': 'geometry.fill',
+                'stylers': {
+                    'color': '#000000'
+                }
+            }, {
+                'featureType': 'railway',
+                'elementType': 'geometry.stroke',
+                'stylers': {
+                    'color': '#08304b'
+                }
+            }, {
+                'featureType': 'subway',
+                'elementType': 'geometry',
+                'stylers': {
+                    'lightness': -70
+                }
+            }, {
+                'featureType': 'building',
+                'elementType': 'geometry.fill',
+                'stylers': {
+                    'color': '#000000'
+                }
+            }, {
+                'featureType': 'all',
+                'elementType': 'labels.text.fill',
+                'stylers': {
+                    'color': '#857f7f'
+                }
+            }, {
+                'featureType': 'all',
+                'elementType': 'labels.text.stroke',
+                'stylers': {
+                    'color': '#000000'
+                }
+            }, {
+                'featureType': 'building',
+                'elementType': 'geometry',
+                'stylers': {
+                    'color': '#022338'
+                }
+            }, {
+                'featureType': 'green',
+                'elementType': 'geometry',
+                'stylers': {
+                    'color': '#062032'
+                }
+            }, {
+                'featureType': 'boundary',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#465b6c'
+                }
+            }, {
+                'featureType': 'manmade',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#022338'
+                }
+            }, {
+                'featureType': 'label',
+                'elementType': 'all',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }]
+        }
+    },
+        series: [{
+            name:'星巴克地图显示',
+        type: 'scatter',
+        coordinateSystem: 'bmap',
+        data: [],
+            label: {
+                normal: {
+                    formatter: '{b}',
+                    position: 'right',
+                    show: false
+                },
+                emphasis: {
+                    show: true
+                }
+            },
+            itemStyle: {
+                normal: {
+                    shadowBlur: 3.8,
+                    shadowColor: 'rgba(14, 241, 242, 0.8)',
+                    color: 'rgba(14, 241, 242, 0.8)'
+                }
+            }
+    }]};
+        echartsMap.setOption(optionMap);
+        echartsMap.showLoading();
+        $.getJSON('/data/lngLat',function (res) {
+           echartsMap.hideLoading();
+           echartsMap.setOption({
+               series: [{
+                   name:'星巴克地图显示',
+        type: 'scatter',
+        coordinateSystem: 'bmap',
+        data: res,
+                   symbolSize:2.9
+    }]
+           })
+       });
+
+    },
+
     // ===============================================
     // 图表页
     // ===============================================
@@ -908,7 +1171,7 @@ var pageData = {
                     type: 'line',
                     stack: '总量',
                     areaStyle: { normal: {} },
-                    data: [200, 132, 101, 134, 90, 230, 210],
+                    data: [500, 132, 101, 134, 90, 230, 210],
                     itemStyle: {
                         normal: {
                             color: '#59aea2'
